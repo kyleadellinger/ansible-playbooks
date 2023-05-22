@@ -13,5 +13,3 @@
   tasks:
     - name: Create VM
       shell: "qm create {{ vmid }} --name {{ VMname }} --memory {{ memory }} --cores {{ cores }} --net0 {{ network }}"
-
-## this works! 
