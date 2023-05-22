@@ -1,0 +1,17 @@
+## create a new VM in proxmox
+---
+- hosts: "{{ host }}" 
+  become : yes
+
+  vars:
+    vmid: "{{ vmid }}"
+    VMname: "{{ VMname }}"
+    network: "{{ network }}"
+    memory: "{{ memory }}"
+    cores: "{{ cores }}"
+
+  tasks:
+    - name: Create VM
+      shell: "qm create {{ vmid }} --name {{ VMname }} --memory {{ memory }} --cores {{ cores }} --net0 {{ network }}"
+
+## this works! 
