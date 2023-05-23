@@ -1,0 +1,16 @@
+## install qemu guest agent on machine
+---
+- hosts: "{{ host }}"
+  become: yes
+
+  vars:
+    host: "{{ host }}"
+    vmid: "{{ vmid }}"
+
+  tasks:
+    - name: Install QEMU Guest Agent
+      dnf: name=qemu-guest-agent state=present
+    
+    - name: QEMU Service
+      service: name=qemu-guest-agent state=started
+
