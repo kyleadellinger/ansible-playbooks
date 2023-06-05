@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Make sure cache is updated if need be
+      apt: update_cache=true
+
+    - name: Install qemu-guest-agent
+      apt: name=qemu-guest-agent state=present
+
+    - name: Ensure qmeu-guest-agent is running
+      service: name=qemu-guest-agent state=started
