@@ -10,4 +10,4 @@
       apt: name=qemu-guest-agent state=present
 
     - name: Ensure qmeu-guest-agent is running
-      service: name=qemu-guest-agent state=started
+      service: name=qemu-guest-agent state=started enabled=yes

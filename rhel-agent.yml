@@ -10,4 +10,4 @@
       dnf: name=qemu-guest-agent state=present
 
     - name: Ensure qemu-guest-agent is running
-      service: name=qemu-guest-agent state=started 
+      service: name=qemu-guest-agent state=started enabled=yes
