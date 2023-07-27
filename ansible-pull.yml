@@ -2,4 +2,48 @@
 - hosts: 127.0.0.1
   connection: local
   become: true
+
+  tasks:
+  - name: Create user
+    ansible.builtin.user:
+      name: kyle
+      password: $6$rounds=4096$SCqDpahaD1yg.Zlz$.aHBou3YrhKZ6pzPQA.Il1uintN8d1xR5zWPQLfTx.zcXIEEqV5Vnus3.qLlBGo/O.EJDLTeITk5NO/I.VHw8.
+      groups: admins
+      append: yes
+
+ - name: Verify some prequisites
+   ansible.builtin.apt:
+     name:
+       - apt-transport-https
+       - curl
+       - vim
+       - wget
+       state: latest
+       cache_valid_time: 3600 #hour 
+
+  - name: Add GPG Key
+    ansible.builtin.get_url:
+      url: https://packages.adoptium.net/artifactory/api/gpg/key/public
+      dest: /etc/apt/keyrings/adoptium.asc
+      mode: '0755'
+
+  - name: Add repository
+    ansible.builtin.apt_repository:
+      repo: "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb {{ ansible_distribution_release }} main"
+      state: present
+      update_cache: yes
+
+  - name: Install Java
+    ansible.builtin.apt:
+      name:
+        - temurin-11-jdk
+
+  - name: Install Unified Agent
+    ansible.builtin.get_url:
+      url: https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
+      dest: /home/ubuntu/wss-unified-agent.jar
+      mode: '0750'
+      checksum: sha256:c29d834bafcc661ad840463098b22ce1c3d50495f232a7fc8bd0fab29c8867e1
+
   
+    
