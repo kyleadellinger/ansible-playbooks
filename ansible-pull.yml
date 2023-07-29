@@ -43,5 +43,5 @@
       ansible.builtin.get_url:
         url: https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
         dest: /home/ubuntu/wss-unified-agent.jar
-        mode: '0750'
+        mode: '0444'
         checksum: sha256:c29d834bafcc661ad840463098b22ce1c3d50495f232a7fc8bd0fab29c8867e1
