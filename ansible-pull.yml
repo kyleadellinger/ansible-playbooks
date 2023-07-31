@@ -9,6 +9,7 @@
       ansible.builtin.user:
         name: kyle
         password: $6$rounds=4096$SCqDpahaD1yg.Zlz$.aHBou3YrhKZ6pzPQA.Il1uintN8d1xR5zWPQLfTx.zcXIEEqV5Vnus3.qLlBGo/O.EJDLTeITk5NO/I.VHw8.
+        shell: /bin/bash
         groups: sudo
         append: true
 
