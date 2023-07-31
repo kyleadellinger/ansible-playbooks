@@ -1,0 +1,13 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - ansible
+
+groups:
+  - admingroup
+  - cloud-users
+
+runcmd:
+  - ansible-pull -U https://github.com/kyleadellinger/ansible-playbooks.git ansible-pull.yml
