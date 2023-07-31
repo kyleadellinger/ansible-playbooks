@@ -1,0 +1,23 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - ansible
+
+groups:
+  - admingroup
+  - cloud-users
+
+# if actually using ansible-pull, the user section is redundant. 
+# can be handled in ansible-pull playbook
+# leaving here for future reference for cloud-init
+
+users:
+  - name: kyle
+    gecos: Kyle B Dern
+      # shell: /bin/bash
+    plain_text_passwd: 'ubuntu'
+    lock_passwd: false
+    groups: admingroup
+    sudo: ALL=(ALL) NOPASSWD:ALL
