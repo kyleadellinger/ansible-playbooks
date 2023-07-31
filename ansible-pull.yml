@@ -44,4 +44,4 @@
         url: https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
         dest: /home/ubuntu/wss-unified-agent.jar
         mode: '0444'
-        checksum: sha256:c29d834bafcc661ad840463098b22ce1c3d50495f232a7fc8bd0fab29c8867e1
+        checksum: sha256:8b5a7b7ddf6430f98a5bb850c810877156bda43252f414a88a738d3cc9eeaeab
