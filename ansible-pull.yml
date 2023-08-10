@@ -20,8 +20,9 @@
          - curl
          - vim
          - wget
+         - software-properties-common
         state: latest
-        cache_valid_time: 3600 #hour 
+        cache_valid_time: 3600 # hour 
 
     - name: Add GPG Key
       ansible.builtin.get_url:
@@ -33,7 +34,7 @@
       ansible.builtin.apt_repository:
         repo: "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb {{ ansible_distribution_release }} main"
         state: present
-        update_cache: yes
+        update_cache: true
 
     - name: Install Java
       ansible.builtin.apt:
