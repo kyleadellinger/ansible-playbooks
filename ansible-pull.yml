@@ -16,13 +16,13 @@
     - name: Verify some prequisites
       ansible.builtin.apt:
         name:
-         - apt-transport-https
-         - curl
-         - vim
-         - wget
-         - software-properties-common
+          - apt-transport-https
+          - curl
+          - vim
+          - wget
+          - software-properties-common
         state: latest
-        cache_valid_time: 3600 # hour 
+        cache_valid_time: 3600 # hour
 
     - name: Add GPG Key
       ansible.builtin.get_url:
@@ -47,3 +47,10 @@
         dest: /home/ubuntu/wss-unified-agent.jar
         mode: '0444'
         checksum: sha256:https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar.sha256
+
+    - name: Install CLI
+      ansible.builtin.get_url:
+        url: https://downloads.mend.io/cli/linux_amd64/mend
+        dest: /home/ubuntu/mend
+        mode: '0444'
+        # no checksum available at this time
