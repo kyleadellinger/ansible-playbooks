@@ -1,0 +1,13 @@
+---
+- name: Ansible Pull Scratch
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+   - name: Install CLI
+      ansible.builtin.get_url:
+        url: https://downloads.mend.io/cli/linux_amd64/mend
+        dest: /home/USER
+        mode: '0444'
+        # no checksum available at this time
